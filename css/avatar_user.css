@@ -1,0 +1,88 @@
+.avatar
+{
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    vertical-align: bottom; 
+    white-space: nowrap;
+    border-radius: 90px;
+}
+.avatar-i
+{
+    position: absolute;
+    right: 4px;
+    bottom: 2px;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 100%;
+}
+.avatar span.text-circle
+{
+    font-size: 1.2rem;
+
+    display: table-cell; 
+
+    text-align: center;
+    vertical-align: middle;
+
+    color: #fff;
+    background: #babfc7;
+}
+.avatar img
+{
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    height: auto;
+
+    border: 0 none;
+    border-radius: 90px;
+}
+
+.img-and-name-user{
+    height: 60px;
+    
+}
+.img-and-name-user img{
+    height: 50px;
+    width: 50px;
+    margin-left: 1rem;
+}
+.avatar .badge-up
+{
+    top: -8px;
+    right: -11px;
+}
+
+.avatar-online
+{
+    background-color: #5ed84f;
+}
+
+
+
+.menu-box
+{
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 1rem;
+}
+
+.name-user
+{
+    margin-left: 2rem;
+}
+.imgPerfil img
+{
+  width: 100px;
+  height: 100px;
+}
+
+.imgPerfilCambiar img
+{
+    width: 100px;
+    height: 100px;
+}
