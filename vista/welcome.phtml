@@ -1,0 +1,222 @@
+<div class="form">
+
+	<ul class="tab-group">
+		<li class="tab active"><a href="#login">Iniciar Sesión</a></li>
+		<li class="tab"><a href="#signup">Registrase</a></li>
+	</ul>
+
+
+	<div class="tab-content">
+
+		<!-- vista de inicio de seccion -->
+		<div id="login">
+			<h1>Iniciar Sesión</h1>
+			<form action="iniciar_sesion.php" method="POST">
+				<div class="field-wrap">
+
+					<div class="formulario__grupo " id="">
+						<label for="Correo Electronico">
+							Correo Electrónico<span class="req">*</span>
+						</label>
+						<div class="formulario__grupo-input">
+							<input type="email" name="correo" class="formulario__input" placeholder="Correo Electrónico" required autocomplete="off" />
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+					</div>
+					<div class="formulario__grupo " id="">
+						<label for="Correo Electronico">
+							Clave<span class="req">*</span>
+						</label>
+						<div class="formulario__grupo-input">
+							<input type="password" name="clave" class="formulario__input" placeholder="Clave" required autocomplete="off" />
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+					</div>
+
+				</div>
+				<p class="forgot"><a data-bs-toggle="modal" data-bs-target="#RestablecerClaveUser" href="#">olvidaste tu clave?</a></p>
+				<button type="submit" class="button button-block" />Iniciar Sesión</button>
+			</form>
+
+
+
+
+
+		</div>
+		<!-- vista de registro -->
+		<div id="signup">
+			<h1>Registrase Gratis</h1>
+			<div class="top-row">
+				<form action="#" class="formulario" id="formulario" method="POST">
+					<!-- Grupo: Nombre -->
+					<div class="formulario__grupo " id="grupo__nombre">
+						<label for="nombre">
+							Nombres<span class="req">*</span>
+						</label>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Nombres">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El nombre tiene que ser de 4 a 50 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+					</div>
+					<!-- Grupo: Apellido -->
+					<div class="formulario__grupo" id="grupo__apellido">
+						<label for="apellido" class="">Apellidos<span class="req">*</span></label>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" name="apellido" id="apellido" placeholder="Apellidos">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El apellido tiene que ser de 4 a 50 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+					</div>
+
+					<!-- Grupo: Usuario -->
+					<div class="formulario__grupo" id="grupo__usuario">
+						<label for="usuario" class="">Usuario<span class="req">*</span></label>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Usuario">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+					</div>
+
+					<!-- Grupo: Correo Electronico -->
+					<div class="formulario__grupo" id="grupo__correo">
+						<label for="correo" class="">Correo Electrónico<span class="req">*</span></label>
+						<div class="formulario__grupo-input">
+							<input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+					</div>
+
+					<!-- Grupo: Teléfono -->
+					<div class="formulario__grupo" id="grupo__telefono">
+						<label for="telefono" class="">Teléfono <span class="req">*</span></label>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" name="telefono" id="telefono" placeholder="ejemplo :+57 320 456 4232">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">El telefono solo puede contener numeros y el maximo son 14 dígitos.</p>
+					</div>
+
+
+					<!-- Grupo: Contraseña -->
+					<div class="formulario__grupo" id="grupo__password">
+						<label for="password" class="">Clave<span class="req">*</span></label>
+						<div class="formulario__grupo-input">
+							<input type="password" class="formulario__input" name="password" id="password" placeholder="Clave">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+					</div>
+
+					<!-- Grupo: Contraseña 2 -->
+					<div class="formulario__grupo" id="grupo__password2">
+						<label for="password2" class="">Repetir Clave<span class="req">*</span></label>
+						<div class="formulario__grupo-input">
+							<input type="password" class="formulario__input" name="password2" id="password2" placeholder="Confirmar Clave">
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+						</div>
+						<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+					</div>
+
+
+
+
+
+
+					<div class="pais formulario__grupo">
+						<label for="pais">Pais<span class="req">*</span></label>
+						<select class="formulario__input" name="pais" id="pais">
+						</select>
+					</div>
+
+					<div class="depar formulario__grupo">
+						<label for="departamento">departamento<span class="req">*</span></label>
+						<select class="formulario__input" name="departamento" id="departamento">
+
+						</select>
+					</div>
+					<div class="muni formulario__grupo">
+						<label for="municipio">municipio <span class="req">*</span>
+						</label>
+						<select class="formulario__input" name="municipio" id="municipio">
+
+						</select><br>
+
+						<div class="formulario__grupo formulario__grupo-btn-enviar">
+							<button type="submit" class="button button-block" style="margin: 5%;">Registrase</button>
+							<div class="formulario__mensaje" id="formulario__mensaje">
+								<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+							</div>
+							<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+						</div>
+					</div>
+				</form>
+
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+	</div>
+
+
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="RestablecerClaveUser" tabindex="-1" aria-labelledby="RestablecerClaveUserLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="registrar_usuario.php" id="RestablecerClave" method="POST">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Restablecer Clave</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+
+
+						<div class="formulario__grupo" id="grupo__correo2">
+							<label for="restablecer" class="field-wrap">Correo Electrónico</label>
+							<div class="formulario__grupo-input">
+								<input type="email" class="formulario__input" name="correo2" id="correo2" placeholder="correo@correo.com">
+								<i class="formulario__validacion-estado fas fa-times-circle"></i>
+							</div>
+							<p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+						</div>
+
+
+						<div class="formulario__mensaje" id="formulario__mensaje">
+							<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+						</div>
+
+						<div id="loader-restablecer" class="esconder loader loader--flipDelay loader--3d ">
+							<span class="loader-item">1</span>
+							<span class="loader-item">2</span>
+							<span class="loader-item">3</span>
+							<span class="loader-item">4</span>
+							<span class="loader-item">5</span>
+							<span class="loader-item">6</span>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+
+						<button type="submit" id="btnRestablecer" class="btn btn-primary"><i class="fa fa-check"><b>&nbsp;Enviar</b></i>
+
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="fakeLoader"></div>
+

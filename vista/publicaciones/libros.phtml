@@ -1,0 +1,190 @@
+<?php
+if ($menu == 1) include "../vista/lector/menu_lector.phtml";
+if ($menu == 2) include "../vista/autor/menu_autor.phtml";
+if ($menu == 3) include "../vista/admin/menu_admin.phtml";
+
+$array = json_decode($array_data, true);
+
+?>
+
+<section class="container contenedor-publicaciones">
+  <div class="row active-with-click">
+    <?php
+    foreach ($array as $value) {
+    ?>
+
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <article class="material-card Indigo">
+          <h2 class="wrapper">
+            <span><?php echo $value['nombre']; ?></span>
+            <strong>
+              <ul class="menu-content" id="reaciones<?php echo $value['id'] ?>">
+                <li><a class="fa fa-thumbs-up like_libros" id="libro_like_<?php echo $value['id'] ?>" <?php
+                                                                                                      $id_usuario = $_SESSION['userLogin']['id_usuario'];
+                                                                                                      $contador = buscar_like($conexion, $value['id'], $id_usuario);
+                                                                                                      if ($contador == 1) echo 'style="color: red;"';
+                                                                                                      ?>><span id="libro_cantidad_likes_<?php echo $value['id'] ?>"><?php echo $value['likes']; ?></span></a></li>
+                <li><a class="fa fa-comment-o comentarios_libros" data-bs-toggle="modal" id="comentarios_libro_<?php echo $value['id'] ?>"><span id="cantidad_comentarios_libro<?php echo $value['id'] ?>"><?php echo $value['comentarios']; ?></span></a></li>
+
+                <li><a class="fa fa-thumbs-down dislike_libros" id="libro_dislike_<?php echo $value['id'] ?>" <?php
+                                                                                                              $id_usuario = $_SESSION['userLogin']['id_usuario'];
+                                                                                                              $contador = buscar_dislike($conexion, $value['id'], $id_usuario);
+                                                                                                              if ($contador == 1) echo 'style="color: red;"';
+                                                                                                              ?>>
+                    <span id="libro_cantidad_dislikes_<?php echo $value['id'] ?>"><?php echo $value['dislikes']; ?></span></a></li>
+              </ul>
+              <div class="gooey esconder_loader" id="loader_reacion_libro<?php echo $value['id'] ?>">
+                <span class="dot"></span>
+                <div class="dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </strong>
+          </h2>
+          <div class="mc-content">
+            <div class="img-container">
+              <img class="img-responsive" style='width: 100%; height: 100%;' src="../archivos_Publicaciones/libros/caratulas/<?php echo $value['caratula']; ?>">
+            </div>
+            <div class="mc-description">
+              <b class="inf_publi">autor: </b><text id="text_autor_libro"><?php echo $value['autor']; ?></text><br>
+              <b class="inf_publi">publicado: </b><text id="text_fecha_libro"><?php echo $value['fecha_registro']; ?></text> <br>
+              <b class="inf_publi">volumen: </b><text id="text_volumen_libro"><?php echo $value['volumen']; ?></text><br>
+              <b class="inf_publi">paginas: </b><text id="text_paginas_libro"><?php echo $value['paginas']; ?></text><br>
+              <b class="inf_publi">categoria: </b><text id="text_categoria_libro"><?php echo $value['categoria']; ?></text><br>
+              <b class="inf_publi">reseña: </b><text id="text_reseña_libro"><?php echo $value['resena']; ?></text>
+
+            </div>
+          </div>
+          <a class="mc-btn-action">
+            <i class="fa fa-bars"></i>
+          </a>
+          <div class="mc-footer">
+            <a class="boton verde estile" data-bs-toggle="modal" onclick="openModelPDF('<?php echo $value['archivo']; ?>','<?php echo $value['nombre']; ?>')">
+              <span>
+                read book
+                <span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+
+
+
+    <?php
+    }
+    ?>
+  </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade modal-publi" id="modalPdf" tabindex="-1" aria-labelledby="modalPdfLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-xxl-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <iframe id="iframePDF" frameborder="0" scrolling="no" width="100%" height="500px"></iframe>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModelPDF(url, nombrePublicacion) {
+    $(".modal-title").text(nombrePublicacion);
+    $('#iframePDF').attr('src', '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/conte/archivos_Publicaciones/libros/'; ?>' + url);
+    $('#modalPdf').modal('show');
+  }
+</script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal_comentarios_libros" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-xxl-down">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container">
+          <div class="row comentarios justify-content-center">
+            <div class="col-6">
+              <form action="" id="add_comentario_libro" class="form_comentarios d-flex justify-content-end flex-wrap">
+                <input type="hidden" id="id_publicacion" name="id_publicacion">
+                <textarea required name="comentario" id="" placeholder="comentario"></textarea>
+                <button class="btn add_comentario_libro" type="submit">comentar</button>
+
+              </form>
+              <div class="comentarios" id="comentarios_libros"></div>
+              <div class="remodal-bg">
+                <div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                  <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                  <div>
+                    <h2 id="modal1Title">your comments: </h2>
+                    <p id="modal1Desc">
+                    <div class="mis_comentarios">
+
+                      <div class="comentarios" id="mis_comentarios_libros"></div>
+                    </div>
+                    </p>
+                  </div>
+                  <br>
+                  <button data-remodal-action="cancel" class="remodal-cancel">close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" id="footer-libros">
+          <a href="#modal" class="btn">my comments</a>
+          <button type='button' class='btn-cerrar btn btn-secondary'>Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal_mis_comentarios_libros" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-xxl-down">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container">
+            <div class="row comentarios justify-content-center">
+              <div class="col-6">
+
+                <!--               <div class="media">
+                <div class="cabezara-user">
+                <img src="../fotoPerfil/1616489186_OIP.jpg" alt=""> 
+                <p class="usuario">
+                    este es el user
+                    <span>fecha</span>
+                  </p>
+                </div>
+                <div class="media-body">
+                  <p class="comentario">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. In vero corporis soluta possimus. 
+                    Aspernatur molestias, maiores, cupiditate voluptatibus 
+                    nesciunt voluptates animi debitis, possimus unde a sapiente magnam deserunt alias sequi.
+                  </p>
+                </div>
+              </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-cerrar-mis-comentarios">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,134 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="#"></a>
+    <form class="d-flex">
+        <div class="search-box">
+          <input type="text" placeholder=" " /><span></span>
+        </div>
+      </form>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+
+        <li class="nav-item dropdown avatar">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span id="avatar_menu"></span><i class="avatar-i avatar-online"></i>
+          </a>
+          <ul class="dropdown-menu menu-box" aria-labelledby="navbarDropdown">
+            <div class="img-and-name-user  position-relative">
+              <span id="imgU"><span id="name_user" class="name-user position-absolute top-50 start-50 translate-middle"></span>
+            </div>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <div class="accion-user">
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit">edit profile</a>
+              </div>
+
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">logout</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Modal editar perfil -->
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <form id="formPerfil" action="#" method="post">
+      </div>
+      <div class="modal-body">
+        <form id="formPerfil" action="#" method="post">
+          <div class="modal-body">
+            <div class="Container field-wrap">
+
+
+              <input type="text" name="" id="nombres">
+              <input type="text" name="" id="apellidos">
+              <input type="text" name="" id="usuario">
+              <input type="text" name="" id="correo">
+              <input type="text" name="" id="telefono">
+              <div class="imgPerfil" id="imgPerfil">
+              <button type="button" class="cambiarFoto" data-bs-toggle="modal"> cambiar</button>
+
+              </div>
+            </div>
+            <div id="loader-editar-perfil" class="esconder loader loader--flipDelay loader--3d ">
+							<span class="loader-item">1</span>
+							<span class="loader-item">2</span>
+							<span class="loader-item">3</span>
+							<span class="loader-item">4</span>
+							<span class="loader-item">5</span>
+							<span class="loader-item">6</span>
+						</div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" id="btnEditarPerfil" class="btn btn-dark">Guardar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- fin modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="cambiarFotoPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <form name="Foto" id="Foto" method="post" enctype="multipart/form-data">
+      </div>
+      <div class="modal-body">
+          <div class="modal-body">
+            <div class="Container field-wrap">
+
+            <div class="imgPerfilCambiar" id="imgPerfilCambiar"> </div>                         
+
+              <input type="file" id="file" name="imgNueva">
+
+              <div id="loader-cambiar-foto-perfil" class="esconder loader loader--flipDelay loader--3d ">
+							<span class="loader-item">1</span>
+							<span class="loader-item">2</span>
+							<span class="loader-item">3</span>
+							<span class="loader-item">4</span>
+							<span class="loader-item">5</span>
+							<span class="loader-item">6</span>
+						</div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="send_foto btn btn-dark" id="send_foto" >Guardar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- fin modal -->
