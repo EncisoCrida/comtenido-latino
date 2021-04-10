@@ -1,0 +1,143 @@
+ table.dataTable thead {
+    background: #334F99;
+    color:white;
+}
+
+.caja{
+  /* border: 1px solid; */
+  padding: 5px;
+  box-shadow: 10px 10px 50px 1px #7c7c81;
+  border-radius: 10px;
+}
+
+.INput {
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(3em + 2px);
+    margin: 0 0 1em;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    resize: none;
+    outline: none;
+  }
+  .INput[required]:focus {
+    border-color: #00bafa;
+  }
+  .INput[required]:focus + label[placeholder]:before {
+    color: #00bafa;
+  }
+  .INput[required]:focus + label[placeholder]:before,
+  .INput[required]:valid + label[placeholder]:before {
+    transition-duration: 0.2s;
+    transform: translate(0, -1.5em) scale(0.9, 0.9);
+  }
+  .INput[required]:invalid + label[placeholder][alt]:before {
+    content: attr(alt);
+  }
+  .INput[required] + label[placeholder] {
+    display: block;
+    pointer-events: none;
+    line-height: 1.25em;
+    margin-top: calc(-3em - 2px);
+    margin-bottom: calc((3em - 1em) + 2px);
+  }
+  .INput[required] + label[placeholder]:before {
+    content: attr(placeholder);
+    display: inline-block;
+    margin: 0 calc(1em + 2px);
+    padding: 0 2px;
+    color: #898989;
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+    background-image: linear-gradient(to bottom, #fff, #fff);
+    background-size: 100% 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .invoiceBox > input {
+    display: none;
+  }
+  .invoiceBox label {
+    display: block;
+  }
+  .boxCaratula {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    color: rgba(70, 75, 80, 0.823);
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  .boxCaratula:hover {
+    cursor: pointer;
+    background: #02b3eed7;
+    color: #fff;
+  }
+  .boxCaratula i {
+    display: block;
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+
+  .boxArchivo {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    color: rgba(70, 75, 80, 0.823);
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .boxArchivo:hover {
+    cursor: pointer;
+    background: #02b3eed7;
+    color: #fff;
+  }
+  .boxArchivo i {
+    display: block;
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+  .attached,
+  .attached:hover,
+  .attached:focus {
+    background: rgb(20, 160, 211);
+    color: #fff;
+    border: 1px solid rgb(20, 160, 211);
+  }
+  
+  .estilotextarea3 {font-family: Garamond,verdana;
+    font-size: 18pt;
+    font-weight: bold;
+    letter-spacing: 5px;
+    border-color: #007bff;
+    width: 750px;
+  }
+  textarea:hover{
+    border-color:#00bafa;
+  }
+
+
+
+  .add_new{
+    background-color: #5082ff;
+    color: #fff;
+  }
+  .add_new:hover{
+    background-color: #8eaeff;
+  }
